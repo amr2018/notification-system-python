@@ -2,21 +2,25 @@
 
 from tkinter import *
 from PIL import Image, ImageTk
-from playsound import playsound
 from threading import Thread
+
+## Hide pygame msg
+import contextlib
+with contextlib.redirect_stdout(None):
+    import pygame
 
 class Notification:
 	def __init__(self):
 		self.win = Tk()
 		self.title = 'notification '
-		self.icon = ImageTk.PhotoImage(Image.open('icons/notification.png').resize((30,30)))
+		self.icon_path = ''
+		self.audio_path = ''
+	
+		self.icon = None
 		self.description = 'this is notification for test :)'
 		self.background = '#2c3e50'
 
-		if self.background != 'white':
-			self.font_color = 'black'
-		else:
-			self.font_color = 'white'
+		
 
 		self.width = 500
 		self.height = 200
@@ -25,7 +29,9 @@ class Notification:
 
 	def play_sound(self):
 		def play():
-			playsound('audio/1.mp3')
+			pygame.mixer.init()
+			pygame.mixer.music.load(self.audio_path)
+			pygame.mixer.music.play()
 
 		Thread(target=play).start()
 
@@ -33,6 +39,13 @@ class Notification:
 		self.win.destroy()
 
 	def show(self):
+		
+		if self.background == 'white':
+			self.font_color = 'black'
+		else:
+			self.font_color = 'white'
+		
+		self.icon = ImageTk.PhotoImage(Image.open(self.icon_path).resize((30,30)))
 
 		self.win.geometry(f'{self.width}x{self.height}+{self.x}+{self.y}')
 		self.win.overrideredirect(True)
@@ -63,9 +76,3 @@ class Notification:
 		self.win.mainloop()
 
 
-
-
-notify = Notification()
-notify.background = 'white'
-notify.description = 'hi this is tkinter notification test \nhi this is tkinter notification test'
-notify.show()
