@@ -6,14 +6,15 @@ You can add a custom alert sound and icon image.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O1TUHOK)
 
-## Download the code
+## How to use it 
 
-## Install requirements.txt
+[1] Download the code
+
+[2] Install requirements.txt
 ```
 pip install -r requirements.txt
 ```
 
-## How to use it 
 
 ```python
 
