@@ -4,7 +4,7 @@ This is a simple notification system that uses Tkinter as a GUI.
 With this simple system, you can display notifications in an easy way.
 You can add a custom alert sound and icon image.
 
-[Donate On Ko-fi](https://ko-fi.com/freepythoncode)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O1TUHOK)
 
 ## Download the code
 
